@@ -12,17 +12,17 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 //*****************************AssetsController*****************************
-Route::get('/assets', 'assetsController@index');
-Route::get('/assets/create', 'assetsController@create');
-Route::post('/assets', 'assetsController@store');
-Route::get('/assets/{id}', 'assetsController@show');
-Route::get('/assets/{id}/edit', 'assetsController@edit');
-Route::put('/assets/{id}', 'assetsController@update');
-Route::delete('/assets/{id}', 'assetsController@delete');
+Route::get('/assets', 'AssetsController@index');
+Route::get('/assets/create', 'AssetsController@create');
+Route::post('/assets', 'AssetsController@store');
+Route::get('/assets/{id}', 'AssetsController@show');
+Route::get('/assets/{id}/edit', 'AssetsController@edit');
+Route::put('/assets/{id}', 'AssetsController@update');
+Route::delete('/assets/{id}', 'AssetsController@delete');
 
 
 // @TODO need a db, front end sass, sass dependencies, build process to convert sass/js to public dir, image assets.

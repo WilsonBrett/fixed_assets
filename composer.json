@@ -23,7 +23,7 @@
             "database/factories"
         ],
         "psr-4": {
-            "fixed_assets\\": "app/"
+            "App\\": "app/"
         }
     },
     "autoload-dev": {

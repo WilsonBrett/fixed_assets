@@ -9,5 +9,5 @@ class Asset extends Model {
 	public $timestamps = false;
 
 	// @TODO update this when know more about fields in the assets table
-	//protected $fillable = ['firstname','lastname','username','password'];
+	protected $fillable = ['Name', 'Category', 'Amount', 'PurchaseDate', 'ServiceStartDate', 'ExpirationDate'];
 }

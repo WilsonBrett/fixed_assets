@@ -1,5 +1,4 @@
 <?php
-
 	namespace App\Http\Controllers;
 
 	use App\Http\Controllers\Controller;
@@ -30,28 +29,28 @@
 			return view('assets.edit', ['asset' => $asset]);
 		}
 
-		public function update(assetValidateRequest $request, $id) {
+		public function update($request, $id) {
 			$this->repository->update_asset($request, $id);
-			return redirect('/assets');
+			return redirect('/fixedassets/assets');
 		}
 
 		public function create() {
 			return view('assets.create');
 		}
 
-		public function store(assetValidateRequest $request) {
+		public function store($request) {
 			$success = $this->repository->add_asset($request);
 
 			if($success) {
-				return redirect('/assets');
+				return redirect('/fixedassets/assets');
 			} else {
-				return redirect('/assets/create')
+				return redirect('/fixedassets/assets/create')
 					->with('error', 'Error:  asset is in use.  Please try another.');
 			}
 		}
 
 		public function delete($id) {
 			$this->repository->delete_asset($id);
-			return redirect('/assets');
+			return redirect('/fixedassets/assets');
 		}
 	}

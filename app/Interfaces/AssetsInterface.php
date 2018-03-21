@@ -1,20 +1,21 @@
 <?php
 
-namespace App\Interfaces;
-use Illuminate\Http\Request;
+	namespace App\Interfaces;
 
-interface assetsInterface {
-	//create
-	public function add_asset($req);
+	use Illuminate\Http\Request;
 
-	//read
-	public function get_assets();
-	public function get_asset_by_assetname($u);
-	public function get_asset_by_id($id);
+	interface AssetsInterface {
+		//create
+		public function add_asset($req);
 
-	//update
-	public function update_asset($req, $id);
+		//read
+		public function get_assets();
+		public function get_asset_by_assetname($u);
+		public function get_asset_by_id($id);
 
-	//delete
-	public function delete_asset($id);
-}
+		//update
+		public function update_asset($req, $id);
+
+		//delete
+		public function delete_asset($id);
+	}
