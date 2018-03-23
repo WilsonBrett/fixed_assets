@@ -17,10 +17,11 @@ Route::get('/', function () {
 
 //*****************************AssetsController*****************************
 Route::get('/assets', 'AssetsController@index');
+Route::get('/assets/create', 'AssetsController@create');
 Route::get('/assets/{id}', 'AssetsController@show');
 Route::get('/assets/{id}/edit', 'AssetsController@edit');
 Route::put('/assets/{id}', 'AssetsController@update');
-Route::get('/assets/create', 'AssetsController@create');
+
 Route::post('/assets', 'AssetsController@store');
 Route::delete('/assets/{id}', 'AssetsController@delete');
 

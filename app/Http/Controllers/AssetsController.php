@@ -29,7 +29,7 @@
 
 		public function edit($id) {
 			$asset = $this->repository->get_asset_by_id($id);
-			$categories = $this->categories_repository->get_categories(); //need this for the drop down input box
+			$categories = $this->categories_repository->get_categories(); //need this for the drop down select list
 			return view('assets.edit', ['asset' => $asset, 'categories' => $categories]);
 		}
 
@@ -39,16 +39,17 @@
 		}
 
 		public function create() {
-			return view('assets.create');
+			$categories = $this->categories_repository->get_categories(); //need this for the drop down select list
+			return view('assets.create', ['categories' => $categories]);
 		}
 
-		public function store($request) {
+		public function store(Request $request) {
 			$success = $this->repository->add_asset($request);
 
 			if($success) {
-				return redirect('/fixedassets/assets');
+				return redirect('/assets');
 			} else {
-				return redirect('/fixedassets/assets/create')
+				return redirect('/assets/create')
 					->with('error', 'Error:  asset is in use.  Please try another.');
 			}
 		}
