@@ -7,8 +7,9 @@
 		<thead>
 			<tr>
 				<th>#</th>
-				<th>Description</th>
+				<th>Asset Name</th>
 				<th>Category</th>
+				<th>Amount ($)</th>
 				<th>Purchase Date</th>
 			</tr>
 		</thead>
@@ -16,9 +17,10 @@
 			@foreach($assets as $asset)
 				<tr>
 					<td>{{ $loop->iteration }}</td>
-					<td><a href="/fixedassets/assets/{{ $asset->id }}">{{ $asset->Name }}</a></td>
-					<td>{{ $asset->Category }}</td>
-					<td>{{ $asset->PurchaseDate }}</td>
+					<td><a href="/assets/{{ $asset->id }}">{{ $asset->name }}</a></td>
+					<td>{{ $asset->category }}</td>
+					<td>{{ $asset->amount }}</td>
+					<td>{{ $asset->purchase_date }}</td>
 				</tr>
 			@endforeach
 		</tbody>

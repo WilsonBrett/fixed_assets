@@ -10,4 +10,8 @@ class Asset extends Model {
 
 	// @TODO update this when know more about fields in the assets table
 	protected $fillable = ['Name', 'Category', 'Amount', 'PurchaseDate', 'ServiceStartDate', 'ExpirationDate'];
+
+	public function categories() {
+		return $this->belongsTo('App\models\Category');
+	}
 }

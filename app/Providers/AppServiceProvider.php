@@ -26,6 +26,7 @@ class AppServiceProvider extends ServiceProvider
 		//Wherever the interface is injected (controllers) the repository gets injected instead.
 		//Don't have to update controller code if decide to later swap out the orm or the db.
 		//Update bind statement here with newly created repository (implementation) - brett.
-		$this->app->bind('App\Interfaces\AssetsInterface', 'App\Repositories\AssetsRepository');
+			$this->app->bind('App\Interfaces\AssetsInterface', 'App\Repositories\AssetsRepository');
+			$this->app->bind('App\Interfaces\CategoriesInterface', 'App\Repositories\CategoriesRepository');
     }
 }

@@ -4,6 +4,8 @@ namespace App\Repositories;
 
 use App\Interfaces\AssetsInterface;
 use App\Models\Asset;
+use App\Models\Category;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 
@@ -12,7 +14,7 @@ class AssetsRepository implements AssetsInterface {
 	//create
 	public function add_asset($req) {
 
-		$assetname = $req->input('assetname');
+		$assetname = $req->input('name');
 		$asset = $this->get_asset_by_assetname($assetname);
 
 		if($asset) {
@@ -27,17 +29,28 @@ class AssetsRepository implements AssetsInterface {
 
 	//read
 	public function get_assets() {
-		return Asset::all();
+		//return Asset::get();
+		$assets = DB::table('assets')
+			->leftJoin('categories', 'assets.category_id', '=', 'categories.id')
+			->select('assets.id', 'assets.name', 'categories.category', 'assets.amount', 'assets.purchase_date')
+			->get();
+		return $assets;
 	}
 
 	public function get_asset_by_assetname($a) {
-		$asset = Asset::where('assetname', $a)->get();
+		//$asset = Asset::where('assetname', $a)->get();
+
 		return $result = $asset->isEmpty() ? false : $asset[0];
 	}
 
 	public function get_asset_by_id($id) {
-		$asset = Asset::where('id', $id)->get();
-		return $asset[0];
+		$asset = DB::table('assets')
+			->leftJoin('categories', 'assets.category_id', '=', 'categories.id')
+			->select('assets.id', 'assets.name', 'categories.category', 'categories.useful_life', 'assets.amount', 'assets.purchase_date', 'assets.service_start_date', 'assets.expiration_date')
+			->where('assets.id', $id)
+			->get();
+
+		return $asset_vals = $asset->all()[0];
 	}
 
 	//update

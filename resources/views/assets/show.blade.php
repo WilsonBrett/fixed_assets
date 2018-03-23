@@ -4,13 +4,13 @@
 
 @section('content')
 	<ul>
-		@foreach($asset->getAttributes() as $key=>$attr)
-			@if($key=='id')
+		@foreach($vals as $key=>$val)
+			@if($key == 'id')
 				@continue
 			@endif
-			<li>{{ $key }}: {{ $attr }}</li>
+			<li><span>{{ $key }}: </span>{{ $val }}</li>
 		@endforeach
 	</ul>
 
-	<a href="/fixedassets/assets/{{ $asset->id }}/edit">Edit</a>
+	<a href="/assets/{{ $vals->id }}/edit">Edit</a>
 @stop

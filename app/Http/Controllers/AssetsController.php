@@ -3,15 +3,18 @@
 
 	use App\Http\Controllers\Controller;
 	use App\Interfaces\AssetsInterface;
+	use App\Interfaces\CategoriesInterface;
 	use Illuminate\Support\Facades\Cache;
 	use Illuminate\Http\Request;
 	use Illuminate\Http\RedirectResponse;
 
 	class AssetsController extends Controller {
 		public $repository;
+		public $categories_repository;
 
-		public function __construct(AssetsInterface $repository) {
+		public function __construct(AssetsInterface $repository, CategoriesInterface $categories_repository) {
 			$this->repository = $repository;
+			$this->categories_repository = $categories_repository;
 		}
 
 		public function index() {
@@ -20,13 +23,14 @@
 		}
 
 		public function show($id) {
-			$asset = $this->repository->get_asset_by_id($id);
-			return view('assets.show', ['asset' => $asset]);
+			$vals = $this->repository->get_asset_by_id($id);
+			return view('assets.show', ['vals' => $vals]);
 		}
 
 		public function edit($id) {
 			$asset = $this->repository->get_asset_by_id($id);
-			return view('assets.edit', ['asset' => $asset]);
+			$categories = $this->categories_repository->get_categories(); //need this for the drop down input box
+			return view('assets.edit', ['asset' => $asset, 'categories' => $categories]);
 		}
 
 		public function update($request, $id) {
