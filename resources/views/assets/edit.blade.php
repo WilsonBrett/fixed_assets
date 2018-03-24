@@ -1,6 +1,6 @@
-@extends('base')
+@php ($page_title = 'Edit Asset')
 
-<h1>Edit Asset</h1>
+@extends('base')
 
 @section('content')
     <form method="post" action="/assets/{{ $asset->id }}">
@@ -34,9 +34,12 @@
             <label for="expiration-date">Expiration Date</label>
             <input name="expiration-date" type="text" id="expiration-date" class="form-control" value="{{ $asset->expiration_date }}" disabled>
         </div>
-        <div>
-            <input name="submit" type="submit" value="Update Asset">
-            <a href="/assets/{{$asset->id}}" class="btn btn-default">Cancel</a>
-        </div>
+        <input name="submit" type="submit" value="Submit">
     </form>
+    <form method="post" action="/assets/{{ $asset->id }}" id="deleteForm">
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+        {{ method_field('DELETE') }}
+        <input type="submit" value="Delete Asset" id="deleteBtn">
+    </form>
+    <a href="/assets/{{$asset->id}}">Cancel</a>
 @stop

@@ -1,6 +1,6 @@
-@extends('base')
+@php ($page_title = 'Asset Detail (Show)')
 
-<h1>Asset Detail (Show)</h1>
+@extends('base')
 
 @section('content')
 	<ul>
@@ -11,6 +11,10 @@
 			<li><span>{{ $key }}: </span>{{ $val }}</li>
 		@endforeach
 	</ul>
-
-	<a href="/assets/{{ $vals->id }}/edit">Edit</a>
+	<a href="/assets/{{ $vals->id }}/edit">Edit Asset</a>
+	<form method="post" action="/assets/{{ $vals->id }}" id="deleteForm">
+		<input type="hidden" name="_token" value="{{ csrf_token() }}">
+		{{ method_field('DELETE') }}
+		<input type="submit" value="Delete Asset" id="deleteBtn">
+	</form>
 @stop

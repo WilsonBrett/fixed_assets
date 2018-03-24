@@ -21,7 +21,6 @@ Route::get('/assets/create', 'AssetsController@create');
 Route::get('/assets/{id}', 'AssetsController@show');
 Route::get('/assets/{id}/edit', 'AssetsController@edit');
 Route::put('/assets/{id}', 'AssetsController@update');
-
 Route::post('/assets', 'AssetsController@store');
 Route::delete('/assets/{id}', 'AssetsController@delete');
 

@@ -1,6 +1,6 @@
-@extends('base')
+@php ($page_title = 'Assets Index')
 
-<h1>Assets Index</h1>
+@extends('base')
 
 @section('content')
 	<table>
@@ -11,6 +11,8 @@
 				<th>Category</th>
 				<th>Amount ($)</th>
 				<th>Purchase Date</th>
+				<th>Details</th>
+				<th>Edit</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -21,6 +23,8 @@
 					<td>{{ $asset->category }}</td>
 					<td>{{ $asset->amount }}</td>
 					<td>{{ $asset->purchase_date }}</td>
+					<td><a href="/assets/{{ $asset->id }}">Show Details</a></td>
+					<td><a href="/assets/{{ $asset->id }}/edit">Edit Asset</a></td>
 				</tr>
 			@endforeach
 		</tbody>

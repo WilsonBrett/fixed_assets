@@ -1,8 +1,17 @@
+@php ($page_title = 'Create Asset')
+
 @extends('base')
 
-<h1>Create Asset</h1>
-
 @section('content')
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <form method="post" action="/assets">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <div class="form-group">
@@ -11,7 +20,7 @@
         </div>
         <div class="form-group">
             <label for="category">Category</label>
-            <select name="category" id="category" class="form-control">
+            <select name="category_id" id="category_id" class="form-control">
                 @foreach($categories as $category)
                     <option value="{{ $category->id }}" data-useful-life="{{ $category->useful_life }}">{{ $category->category }}</option>
                 @endforeach
@@ -23,18 +32,18 @@
         </div>
         <div class="form-group">
             <label for="purchase-date">Purchase Date</label>
-            <input name="purchase-date" type="text" id="purchase-date" class="form-control">
+            <input name="purchase_date" type="text" id="purchase-date" class="form-control">
         </div>
         <div class="form-group">
             <label for="service-start-date">Service Start Date</label>
-            <input name="service-start-date" type="text" id="service-start-date" class="form-control">
+            <input name="service_start_date" type="text" id="service-start-date" class="form-control">
         </div>
         <div class="form-group">
             <label for="expiration-date">Expiration Date</label>
-            <input name="expiration-date" type="text" id="expiration-date" class="form-control" disabled>
+            <input name="expiration_date" type="text" id="expiration-date" class="form-control">
         </div>
         <div>
-            <input name="submit" type="submit" value="Update Asset">
+            <input name="submit" type="submit" value="Create Asset">
             <a href="/assets" class="btn btn-default">Cancel</a>
         </div>
     </form>

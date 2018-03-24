@@ -8,8 +8,7 @@ class Asset extends Model {
 	//I set timestamps to false because on update eloquent was using a different timezone then on create.
 	public $timestamps = false;
 
-	// @TODO update this when know more about fields in the assets table
-	protected $fillable = ['Name', 'Category', 'Amount', 'PurchaseDate', 'ServiceStartDate', 'ExpirationDate'];
+	protected $fillable = ['name', 'category_id', 'amount', 'purchase_date', 'service_start_date', 'expiration_date'];
 
 	public function categories() {
 		return $this->belongsTo('App\models\Category');

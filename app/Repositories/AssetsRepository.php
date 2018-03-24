@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Http\Requests\StoreAsset;
 use App\Interfaces\AssetsInterface;
 use App\Models\Asset;
 use App\Models\Category;
@@ -13,18 +14,14 @@ class AssetsRepository implements AssetsInterface {
 
 	//create
 	public function add_asset($req) {
-
-		$assetname = $req->input('name');
-		$asset = $this->get_asset_by_assetname($assetname);
-
-		if($asset) {
-			//fail - asset exists in db.
-			return false;
-
-		} else {
-			Asset::create($req->all());
-			return true;
-		}
+		$asset = new Asset;
+		$asset->name = $req->name;
+		$asset->category_id = $req->category_id;
+		$asset->amount = $req->amount;
+		$asset->purchase_date = $req->purchase_date;
+		$asset->service_start_date = $req->service_start_date;
+		$asset->expiration_date = $req->expiration_date;
+		$asset->save();
 	}
 
 	//read
@@ -38,8 +35,6 @@ class AssetsRepository implements AssetsInterface {
 	}
 
 	public function get_asset_by_assetname($a) {
-		//$asset = Asset::where('assetname', $a)->get();
-
 		return $result = $asset->isEmpty() ? false : $asset[0];
 	}
 

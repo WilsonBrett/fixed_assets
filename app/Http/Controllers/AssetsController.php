@@ -7,6 +7,7 @@
 	use Illuminate\Support\Facades\Cache;
 	use Illuminate\Http\Request;
 	use Illuminate\Http\RedirectResponse;
+	use App\Http\Requests\StoreAsset;
 
 	class AssetsController extends Controller {
 		public $repository;
@@ -33,9 +34,9 @@
 			return view('assets.edit', ['asset' => $asset, 'categories' => $categories]);
 		}
 
-		public function update($request, $id) {
+		public function update(StoreAsset $request, $id) {
 			$this->repository->update_asset($request, $id);
-			return redirect('/fixedassets/assets');
+			return redirect('/assets');
 		}
 
 		public function create() {
@@ -43,19 +44,14 @@
 			return view('assets.create', ['categories' => $categories]);
 		}
 
-		public function store(Request $request) {
-			$success = $this->repository->add_asset($request);
-
-			if($success) {
-				return redirect('/assets');
-			} else {
-				return redirect('/assets/create')
-					->with('error', 'Error:  asset is in use.  Please try another.');
-			}
+		//public function store(StoreAsset $request) {
+		public function store(StoreAsset $request) {
+			$this->repository->add_asset($request);
+			return redirect('/assets');
 		}
 
 		public function delete($id) {
 			$this->repository->delete_asset($id);
-			return redirect('/fixedassets/assets');
+			return redirect('/assets');
 		}
 	}

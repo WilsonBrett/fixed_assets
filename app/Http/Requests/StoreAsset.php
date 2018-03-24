@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
+use App\Models\Category;
 
 class StoreAsset extends FormRequest
 {
@@ -13,7 +15,7 @@ class StoreAsset extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,10 +23,15 @@ class StoreAsset extends FormRequest
      *
      * @return array
      */
-    public function rules()
-    {
-        return [
-            //
-        ];
+    public function rules() {
+    	//@TODO: need to figure out Rule::in or in_array rule to validate category id
+			return [
+				'name' => 'required|string|max:255',
+				'category_id' => 'required|integer|min:0',
+				'amount' => 'required|numeric|min:0|max:10000000',
+				'purchase_date' => 'required|date',
+				'service_start_date' => 'required|date',
+				'expiration_date' => 'required|date',
+			];
     }
 }
