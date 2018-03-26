@@ -8,6 +8,7 @@
 	use Illuminate\Http\Request;
 	use Illuminate\Http\RedirectResponse;
 	use App\Http\Requests\StoreAsset;
+	use App\Http\Requests\UpdateAsset;
 
 	class AssetsController extends Controller {
 		public $repository;
@@ -34,7 +35,7 @@
 			return view('assets.edit', ['asset' => $asset, 'categories' => $categories]);
 		}
 
-		public function update(StoreAsset $request, $id) {
+		public function update(UpdateAsset $request, $id) {
 			$this->repository->update_asset($request, $id);
 			return redirect('/assets');
 		}
@@ -44,7 +45,6 @@
 			return view('assets.create', ['categories' => $categories]);
 		}
 
-		//public function store(StoreAsset $request) {
 		public function store(StoreAsset $request) {
 			$this->repository->add_asset($request);
 			return redirect('/assets');

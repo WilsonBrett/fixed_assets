@@ -22,7 +22,7 @@
 					<td><a href="/assets/{{ $asset->id }}">{{ $asset->name }}</a></td>
 					<td>{{ $asset->category }}</td>
 					<td>{{ $asset->amount }}</td>
-					<td>{{ $asset->purchase_date }}</td>
+					<td>{{ $asset->purchase_date->format('M j, Y') }}</td>
 					<td><a href="/assets/{{ $asset->id }}">Show Details</a></td>
 					<td><a href="/assets/{{ $asset->id }}/edit">Edit Asset</a></td>
 				</tr>

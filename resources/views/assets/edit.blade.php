@@ -3,6 +3,15 @@
 @extends('base')
 
 @section('content')
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <form method="post" action="/assets/{{ $asset->id }}">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         {{ method_field('PUT') }}
@@ -12,9 +21,9 @@
         </div>
         <div class="form-group">
             <label for="category">Category</label>
-            <select name="category" id="category" class="form-control" value="{{ $asset->category }}">
+            <select name="category" id="category" class="form-control">
                 @foreach($categories as $category)
-                    <option value="{{ $category->id }}" data-useful-life="{{ $category->useful_life }}">{{ $category->category }}</option>
+                    <option value="{{ $category->id }}" data-useful-life="{{ $category->useful_life }}" {{ $asset->category == $category->category ? 'selected' : null }}>{{ $category->category }}</option>
                 @endforeach
             </select>
         </div>
@@ -24,15 +33,15 @@
         </div>
         <div class="form-group">
             <label for="purchase-date">Purchase Date</label>
-            <input name="purchase-date" type="text" id="purchase-date" class="form-control" value="{{ $asset->purchase_date }}">
+            <input name="purchase_date" type="text" id="purchase-date" class="form-control" value="{{ $asset->purchase_date }}">
         </div>
         <div class="form-group">
             <label for="service-start-date">Service Start Date</label>
-            <input name="service-start-date" type="text" id="service-start-date" class="form-control" value="{{ $asset->service_start_date }}">
+            <input name="service_start_date" type="text" id="service-start-date" class="form-control" value="{{ $asset->service_start_date }}">
         </div>
         <div class="form-group">
             <label for="expiration-date">Expiration Date</label>
-            <input name="expiration-date" type="text" id="expiration-date" class="form-control" value="{{ $asset->expiration_date }}" disabled>
+            <input name="expiration_date" type="text" id="expiration-date" class="form-control" value="{{ $asset->expiration_date }}" readonly>
         </div>
         <input name="submit" type="submit" value="Submit">
     </form>

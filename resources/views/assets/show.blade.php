@@ -8,7 +8,11 @@
 			@if($key == 'id')
 				@continue
 			@endif
-			<li><span>{{ $key }}: </span>{{ $val }}</li>
+			@if(in_array($key, ['purchase_date', 'service_start_date', 'expiration_date']))
+					<li><span>{{ $key }}: </span>{{ $val->format('M j, Y') }}</li>
+			@else
+					<li><span>{{ $key }}: </span>{{ $val }}</li>
+			@endif
 		@endforeach
 	</ul>
 	<a href="/assets/{{ $vals->id }}/edit">Edit Asset</a>
