@@ -1,19 +1,24 @@
 <html>
 	<head>
 		<title>FixedAssets</title>
+		<link rel="stylesheet" href="/css/app.css">
 	</head>
 	<body>
-		@if(empty($page_title))
-			@php ($page_title = 'Homepage')
-		@endif
-		<h1>{{ $page_title }}</h1>
-		<header>
-			<menu>
-				<a href="/">Home</a>
-				<a href="/assets">Assets</a>
-				<a href="/assets/create">Add New Asset</a>
-			</menu>
-		</header>
-		@yield('content')
+		<div class="content-wrapper">
+			<header>
+				@if(empty($page_title))
+					@php ($page_title = 'Homepage')
+				@endif
+				<h1 class="page-title">{{ $page_title }}</h1>
+				<menu class="main-menu">
+					<ul>
+						<li><a href="/">Home</a></li>
+						<li><a href="/assets">Assets</a></li>
+						<li><a href="/assets/create">Add Asset</a></li>
+					</ul>
+				</menu>
+			</header>
+			@yield('content')
+		</div>
 	</body>
 </html>

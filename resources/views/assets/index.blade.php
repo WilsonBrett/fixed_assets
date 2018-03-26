@@ -3,7 +3,7 @@
 @extends('base')
 
 @section('content')
-	<table>
+	<table class="index-table">
 		<thead>
 			<tr>
 				<th>#</th>

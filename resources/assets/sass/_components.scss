@@ -1,0 +1,22 @@
+.main-menu {
+	margin: 0;
+	padding: 0;
+
+	> ul {
+		display: block;
+		list-style-type: none;
+		margin: 0 auto;
+		padding: 0;
+		text-align: center;
+
+		li {
+			display: inline;
+		}
+
+		a {
+			font-size: 1.25rem;
+			padding: 0.5rem 1rem;
+		}
+	}
+}
+

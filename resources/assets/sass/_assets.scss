@@ -1,0 +1,23 @@
+.page-title {
+	text-align: center;
+}
+
+.index-table {
+	border-collapse: collapse;
+	margin: 0 auto;
+
+	thead {
+		border-bottom: 1px solid $asset-border-bottom;
+
+		th {
+			font-family: $serif-stack;
+			font-weight: 100;
+		}
+	}
+
+	tbody {
+		td {
+			padding: 0.25rem 1.5rem;
+		}
+	}
+}

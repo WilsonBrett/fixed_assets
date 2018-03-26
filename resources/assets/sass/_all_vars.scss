@@ -1,0 +1,20 @@
+//Colors
+$lightgrey: #ffffff;
+$dark-grey: #464646;
+
+//color uses
+$site-background: $lightgrey;
+$text-dark: $dark-grey;
+$asset-border-bottom: $text-dark;
+
+//fonts
+@import url('https://fonts.googleapis.com/css?family=Adamina|Raleway');
+$base-font-size: 16px;
+$serif-stack: Adamina, serif;
+$sans-serif-stack: Raleway, sans-serif;
+
+//layout variables
+$site-max-width: 1440px;
+$content-max-width: 1280px;
+
+//breakpoints
