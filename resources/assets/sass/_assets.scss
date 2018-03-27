@@ -17,7 +17,38 @@
 
 	tbody {
 		td {
-			padding: 0.25rem 1.5rem;
+			line-height: 2rem;
+			padding: 0 1.5rem;
+
+			&.asset-amount {
+				text-align: right;
+			}
+
+			&.asset-details-btn {
+				padding-right: 2rem;
+
+				a {
+					@extend %asset-btn;
+					background-color: $asset-detail-btn-back;
+
+					&:hover {
+						background-color: lighten($asset-detail-btn-back, 5%);
+					}
+				}
+			}
+
+			&.edit-asset-btn {
+				padding-left: 2rem;
+
+				a {
+					@extend %asset-btn;
+					background-color: $edit-asset-btn;
+
+					&:hover {
+						background-color: lighten($edit-asset-btn, 5%);
+					}
+				}
+			}
 		}
 	}
 }

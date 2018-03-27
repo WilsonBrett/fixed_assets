@@ -30,6 +30,8 @@ class AssetsRepository implements AssetsInterface {
 		$assets = DB::table('assets')
 			->leftJoin('categories', 'assets.category_id', '=', 'categories.id')
 			->select('assets.id', 'assets.name', 'categories.category', 'assets.amount', 'assets.purchase_date')
+			->orderBy('category', 'asc')
+			->orderBy('name', 'asc')
 			->get();
 
 		//format the dates

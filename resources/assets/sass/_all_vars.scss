@@ -1,11 +1,15 @@
 //Colors
 $lightgrey: #ffffff;
 $dark-grey: #464646;
+$lime-green: #64e764;
+$sherbert: #FF9D00;
 
 //color uses
 $site-background: $lightgrey;
 $text-dark: $dark-grey;
 $asset-border-bottom: $text-dark;
+$asset-detail-btn-back: $lime-green;
+$edit-asset-btn: $sherbert;
 
 //fonts
 @import url('https://fonts.googleapis.com/css?family=Adamina|Raleway');

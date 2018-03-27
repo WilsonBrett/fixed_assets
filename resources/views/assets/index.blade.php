@@ -11,8 +11,8 @@
 				<th>Category</th>
 				<th>Amount ($)</th>
 				<th>Purchase Date</th>
-				<th>Details</th>
-				<th>Edit</th>
+				<th>View Asset</th>
+				<th>Edit Asset</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -21,10 +21,10 @@
 					<td>{{ $loop->iteration }}</td>
 					<td><a href="/assets/{{ $asset->id }}">{{ $asset->name }}</a></td>
 					<td>{{ $asset->category }}</td>
-					<td>{{ $asset->amount }}</td>
+					<td class="asset-amount">{{ number_format($asset->amount, 2) }}</td>
 					<td>{{ $asset->purchase_date->format('M j, Y') }}</td>
-					<td><a href="/assets/{{ $asset->id }}">Show Details</a></td>
-					<td><a href="/assets/{{ $asset->id }}/edit">Edit Asset</a></td>
+					<td class="asset-details-btn"><a href="/assets/{{ $asset->id }}">View</a></td>
+					<td class="edit-asset-btn"><a href="/assets/{{ $asset->id }}/edit">Edit</a></td>
 				</tr>
 			@endforeach
 		</tbody>
