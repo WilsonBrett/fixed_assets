@@ -7,10 +7,10 @@
 		<thead>
 			<tr>
 				<th>#</th>
-				<th>Asset Name</th>
-				<th>Category</th>
-				<th>Amount ($)</th>
-				<th>Purchase Date</th>
+				<th>Asset Name<a href="/assets?sort=name&order=asc">+</a><a href="/assets?sort=name&order=desc">-</a></th>
+				<th>Category<a href="/assets?sort=category&order=asc">+</a><a href="/assets?sort=category&order=desc">-</a></th>
+				<th>Amount ($)<a href="/assets?sort=amount&order=asc">+</a><a href="/assets?sort=amount&order=desc">-</a></th>
+				<th>Purchase Date<a href="/assets?sort=purchase_date&order=asc">+</a><a href="/assets?sort=purchase_date&order=desc">-</a></th>
 				<th>View Asset</th>
 				<th>Edit Asset</th>
 			</tr>
@@ -29,4 +29,5 @@
 			@endforeach
 		</tbody>
 	</table>
+	{{ $assets->links() }}
 @stop

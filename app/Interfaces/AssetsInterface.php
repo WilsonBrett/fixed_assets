@@ -9,7 +9,7 @@
 		public function add_asset($req);
 
 		//read
-		public function get_assets();
+		public function get_assets($sort, $order);
 		public function get_asset_by_assetname($u);
 		public function get_asset_by_id($id);
 

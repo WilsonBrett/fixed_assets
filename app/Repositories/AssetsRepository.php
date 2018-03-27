@@ -26,13 +26,14 @@ class AssetsRepository implements AssetsInterface {
 	}
 
 	//read
-	public function get_assets() {
+	public function get_assets($sort, $order) {
+		$order2 = $sort == 'name' ? $order : 'asc';
 		$assets = DB::table('assets')
 			->leftJoin('categories', 'assets.category_id', '=', 'categories.id')
 			->select('assets.id', 'assets.name', 'categories.category', 'assets.amount', 'assets.purchase_date')
-			->orderBy('category', 'asc')
-			->orderBy('name', 'asc')
-			->get();
+			->orderBy($sort, $order)
+			->orderBy('name', $order2)
+			->paginate(10);
 
 		//format the dates
 		$this->__date_formatter($assets, ['purchase_date']);

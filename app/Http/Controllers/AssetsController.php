@@ -20,7 +20,9 @@
 		}
 
 		public function index() {
-			$assets = $this->repository->get_assets();
+			$sort_col = isset($_GET['sort']) ? $_GET['sort'] : 'category';
+			$order_col = isset($_GET['order']) ? $_GET['order'] : 'asc';
+			$assets = $this->repository->get_assets($sort_col, $order_col);
 			return view('assets.index', ['assets' => $assets]);
 		}
 

@@ -21,3 +21,23 @@
 	}
 }
 
+.pagination {
+	font-size: 2rem;
+	list-style-type: none;
+	padding: 0;
+	text-align: center;
+
+	.page-item {
+		display: inline-block;
+
+		a, span {
+			padding: 0 1rem;
+		}
+
+		&.active {
+			a, span {
+				color: red;
+			}
+		}
+	}
+}
