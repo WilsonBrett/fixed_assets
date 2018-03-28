@@ -33,7 +33,7 @@ class AssetsRepository implements AssetsInterface {
 			->select('assets.id', 'assets.name', 'categories.category', 'assets.amount', 'assets.purchase_date')
 			->orderBy($sort, $order)
 			->orderBy('name', $order2)
-			->paginate(10);
+			->paginate(3);
 
 		//format the dates
 		$this->__date_formatter($assets, ['purchase_date']);

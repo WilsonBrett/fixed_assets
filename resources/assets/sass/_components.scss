@@ -23,7 +23,6 @@
 
 .pagination {
 	font-size: 2rem;
-	list-style-type: none;
 	padding: 0;
 	text-align: center;
 
@@ -38,6 +37,26 @@
 			a, span {
 				color: red;
 			}
+		}
+	}
+}
+
+//styles for sort buttons on assets index page
+.sortable {
+	span {
+		display: inline-block;
+		position: relative;
+		top: -4px; //to align with font awesome carets for click sorting
+	}
+
+	.sort-wrapper {
+		display: inline-block;
+		width: 1rem;
+
+		a {
+			display: inline-block;
+			font-size: 0.875rem;
+			height: 10px;
 		}
 	}
 }

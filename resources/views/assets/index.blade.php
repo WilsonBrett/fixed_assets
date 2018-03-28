@@ -7,10 +7,34 @@
 		<thead>
 			<tr>
 				<th>#</th>
-				<th>Asset Name<a href="/assets?sort=name&order=asc">+</a><a href="/assets?sort=name&order=desc">-</a></th>
-				<th>Category<a href="/assets?sort=category&order=asc">+</a><a href="/assets?sort=category&order=desc">-</a></th>
-				<th>Amount ($)<a href="/assets?sort=amount&order=asc">+</a><a href="/assets?sort=amount&order=desc">-</a></th>
-				<th>Purchase Date<a href="/assets?sort=purchase_date&order=asc">+</a><a href="/assets?sort=purchase_date&order=desc">-</a></th>
+				<th class="sortable">
+					<span>Asset Name</span>
+					<div class="sort-wrapper">
+						<a href="/assets?sort=name&order=asc"><i class="fas fa-caret-up"></i></a>
+						<a href="/assets?sort=name&order=desc"><i class="fas fa-caret-down"></i></a>
+					</div>
+				</th>
+				<th class="sortable">
+					<span>Category</span>
+					<div class="sort-wrapper">
+						<a href="/assets?sort=category&order=asc"><i class="fas fa-caret-up"></i></a>
+						<a href="/assets?sort=category&order=desc"><i class="fas fa-caret-down"></i></a>
+					</div>
+				</th>
+				<th class="sortable">
+					<span>Amount ($)</span>
+					<div class="sort-wrapper">
+						<a href="/assets?sort=amount&order=asc"><i class="fas fa-caret-up"></i></a>
+						<a href="/assets?sort=amount&order=desc"><i class="fas fa-caret-down"></i></a>
+					</div>
+				</th>
+				<th class="sortable">
+					<span>Purchase Date</span>
+					<div class="sort-wrapper">
+						<a href="/assets?sort=purchase_date&order=asc"><i class="fas fa-caret-up"></i></a>
+						<a href="/assets?sort=purchase_date&order=desc"><i class="fas fa-caret-down"></i></a>
+					</div>
+				</th>
 				<th>View Asset</th>
 				<th>Edit Asset</th>
 			</tr>

@@ -52,3 +52,50 @@
 		}
 	}
 }
+
+//show route - view asset page
+.asset-show {
+	.asset-wrapper {
+		.view-asset-details {
+			margin: 0 auto;
+			font-size: 1.5rem;
+			width: 50%;
+
+			li + li {
+				margin-top: 0.5rem;
+			}
+		}
+	}
+
+	.btn-wrapper {
+		display: flex;
+		justify-content: flex-start;
+		margin: 0 auto;
+		padding: 1rem 0;
+		width: 50%;
+	}
+
+	.edit-asset-btn {
+		@extend %asset-btn;
+		background-color: $edit-asset-btn;
+
+		&:hover {
+			background-color: lighten($edit-asset-btn, 10%);
+		}
+	}
+
+	#delete-asset-form {
+		margin: 0;
+
+		.delete-asset-btn {
+			@extend %asset-btn;
+			margin-left: 2rem;
+			background-color: $delete-asset-btn;
+
+			&:hover {
+				background-color: lighten($delete-asset-btn, 15%);
+				text-decoration: underline;
+			}
+		}
+	}
+}

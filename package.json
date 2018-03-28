@@ -19,5 +19,8 @@
         "popper.js": "^1.12",
         "vue": "^2.5.7"
     },
-    "dependencies": {}
+    "dependencies": {
+        "@fortawesome/fontawesome": "^1.1.5",
+        "@fortawesome/fontawesome-free-solid": "^5.0.9"
+    }
 }
