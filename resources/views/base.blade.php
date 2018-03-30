@@ -2,7 +2,7 @@
 	<head>
 		<title>FixedAssets</title>
 		<link rel="stylesheet" href="/css/app.css">
-		<script type="text/javascript" src="/js/app.js"></script>
+
 	</head>
 	<body class="{{ empty($body_class) ? "homepage" : $body_class }}">
 		<div class="content-wrapper">
@@ -21,5 +21,6 @@
 			</header>
 			@yield('content')
 		</div>
+		<script type="text/javascript" src="/js/app.js"></script>
 	</body>
 </html>

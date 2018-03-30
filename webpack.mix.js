@@ -14,3 +14,11 @@ let mix = require('laravel-mix');
 mix.js('resources/assets/js/app.js', 'public/js')
 	.sass('resources/assets/sass/app.scss', 'public/css')
 	.sourceMaps();
+
+mix.webpackConfig({
+	resolve: {
+		alias: {
+			'jquery-ui': 'jquery-ui-dist/jquery-ui.js'
+		}
+	}
+});
