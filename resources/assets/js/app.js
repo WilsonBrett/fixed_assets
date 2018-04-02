@@ -4,6 +4,6 @@ var jQuery = require('jquery');
 require('jquery-ui');
 
 (function($) {
-	var inputs = $('.hasdatepicker').datepicker();
+	var inputs = $('.hasdatepicker').datepicker({changeYear: true});
 
 })(jQuery);
