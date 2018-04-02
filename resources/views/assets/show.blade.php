@@ -5,13 +5,13 @@
 
 @section('content')
 	<div class="asset-wrapper">
-		<ul class="view-asset-details">
+		<ul class="asset-details">
 			@foreach($vals as $key=>$val)
 				@if($key == 'id')
 					@continue
 				@endif
 				@if(in_array($key, ['purchase_date', 'service_start_date', 'expiration_date']))
-					<li><span>{{ ucwords(str_replace('_', ' ', $key)) }}: </span>{{ $val->format('M j, Y') }}</li>
+					<li><span>{{ ucwords(str_replace('_', ' ', $key)) }}: </span>{{ date_create($val)->format('M j, Y') }}</li>
 				@elseif(in_array($key, ['amount']))
 					<li><span>{{ ucwords(str_replace('_', ' ', $key)) }}: </span>{{ number_format($val, 2) }}</li>
 				@else

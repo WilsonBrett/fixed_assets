@@ -24,11 +24,10 @@ class UpdateAsset extends FormRequest
      * @return array
      */
     public function rules() {
-    	//@TODO: uncomment expiration date when figure out how to pass disabled field value in form submit
 			return [
 				'name' => 'required|string|max:255',
 				'category' => 'required|integer|min:0',
-				'amount' => 'required|numeric|min:0|max:10000000',
+				'amount' => 'required|min:0|max:10000000',
 				'purchase_date' => 'required|date',
 				'service_start_date' => 'required|date',
 				'expiration_date' => 'required|date',

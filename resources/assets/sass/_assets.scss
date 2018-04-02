@@ -56,7 +56,7 @@
 //show route - view asset page
 .asset-show {
 	.asset-wrapper {
-		.view-asset-details {
+		.asset-details {
 			margin: 0 auto;
 			font-size: 1.5rem;
 			width: 50%;
@@ -95,6 +95,98 @@
 			&:hover {
 				background-color: lighten($delete-asset-btn, 15%);
 				text-decoration: underline;
+			}
+		}
+	}
+}
+
+.asset-create {
+	.asset-wrapper {
+		.asset-details {
+			margin: 0 auto;
+			font-size: 1.5rem;
+			width: 50%;
+
+			.form-group {
+				label {
+					color: $text-dark;
+					display: block;
+				}
+			}
+
+			.form-group + .form-group {
+				margin-top: 1rem;
+			}
+
+			.form-control {
+				border: 1px solid lightsteelblue;
+				color: $text-dark;
+				display: block;
+				font-family: $sans-serif-stack;
+				font-size: 1.5rem;
+				font-weight: 100;
+				padding: 0.5rem 1rem;
+				width: 100%;
+			}
+
+			.btn-wrapper {
+				display: flex;
+				justify-content: space-around;
+
+				.btn {
+					border-radius: 5px;
+					font-size: 1rem;
+					font-weight: 100;
+					padding: 0.5rem 0;
+					text-align: center;
+					width: 25%;
+				}
+			}
+		}
+	}
+}
+
+.asset-edit {
+	.asset-wrapper {
+		.asset-details {
+			margin: 0 auto;
+			font-size: 1.5rem;
+			width: 50%;
+
+			.form-group {
+				label {
+					color: $text-dark;
+					display: block;
+				}
+			}
+
+			.form-group + .form-group {
+				margin-top: 1rem;
+			}
+
+			.form-control {
+				border: 1px solid lightsteelblue;
+				color: $text-dark;
+				display: block;
+				font-family: $sans-serif-stack;
+				font-size: 1.5rem;
+				font-weight: 100;
+				padding: 0.5rem 1rem;
+				width: 100%;
+			}
+
+			.btn-wrapper {
+				display: flex;
+				justify-content: space-around;
+
+				.btn {
+					border-radius: 5px;
+					font-size: 1rem;
+					font-weight: 100;
+					padding: 0.5rem 0;
+					text-align: center;
+					width: 25%;
+				}
 			}
 		}
 	}

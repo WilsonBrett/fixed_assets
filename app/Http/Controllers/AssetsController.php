@@ -38,6 +38,7 @@
 		}
 
 		public function update(UpdateAsset $request, $id) {
+			$this->repository->__validate_asset($request);
 			$this->repository->update_asset($request, $id);
 			return redirect('/assets');
 		}

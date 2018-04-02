@@ -20,8 +20,6 @@ Route::get('/assets', 'AssetsController@index');
 Route::get('/assets/create', 'AssetsController@create');
 Route::get('/assets/{id}', 'AssetsController@show');
 Route::get('/assets/{id}/edit', 'AssetsController@edit');
-Route::put('/assets/{id}', 'AssetsController@update');
-Route::post('/assets', 'AssetsController@store');
+Route::put('/assets/{id}', 'AssetsController@update')->middleware('SanitizeAsset');
+Route::post('/assets', 'AssetsController@store')->middleware('SanitizeAsset');
 Route::delete('/assets/{id}', 'AssetsController@delete');
-
-// @TODO need a db, front end sass, sass dependencies, build process to convert sass/js to public dir, image assets.

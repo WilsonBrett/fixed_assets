@@ -2,19 +2,21 @@
 
 namespace App\Repositories;
 
-use App\Http\Requests\StoreAsset;
 use App\Interfaces\AssetsInterface;
 use App\Models\Asset;
 use App\Models\Category;
+use App\Http\Requests\StoreAsset;
+use App\Http\Requests\UpdateAsset;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Carbon;
 
+
 class AssetsRepository implements AssetsInterface {
 
 	//create
-	public function add_asset($req) {
+	public function add_asset(StoreAsset $req) {
 		$asset = new Asset;
 		$asset->name = $req->name;
 		$asset->category_id = $req->category_id;
@@ -33,10 +35,8 @@ class AssetsRepository implements AssetsInterface {
 			->select('assets.id', 'assets.name', 'categories.category', 'assets.amount', 'assets.purchase_date')
 			->orderBy($sort, $order)
 			->orderBy('name', $order2)
-			->paginate(3);
+			->paginate(10);
 
-		//format the dates
-		$this->__date_formatter($assets, ['purchase_date']);
 		return $assets;
 	}
 
@@ -51,12 +51,11 @@ class AssetsRepository implements AssetsInterface {
 			->where('assets.id', $id)
 			->get();
 
-		$this->__date_formatter($asset, ['purchase_date', 'service_start_date', 'expiration_date']);
 		return $asset_vals = $asset->all()[0];
 	}
 
 	//update
-	public function update_asset($req, $id) {
+	public function update_asset(UpdateAsset $req, $id) {
 		$existing_asset = Asset::find($id);
 		$existing_asset->name = $req->name;
 		$existing_asset->category_id = $req->category;
@@ -70,14 +69,5 @@ class AssetsRepository implements AssetsInterface {
 	//delete
 	public function delete_asset($id) {
 		Asset::where('id', '=', $id)->delete();
-	}
-
-	//formats dates with 'each' method off Illuminate\Support\Collection and a carbon instance
-	public function __date_formatter(&$collection, $date_fields_array) {
-		foreach($collection->all() as $item) {
-			foreach($date_fields_array as $field) {
-				$item->$field = Carbon::createFromFormat('!Y-m-d', $item->$field, 'America/New_York');
-			}
-		}
 	}
 }

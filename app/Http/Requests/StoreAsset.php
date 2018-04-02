@@ -24,7 +24,6 @@ class StoreAsset extends FormRequest
      * @return array
      */
     public function rules() {
-    	//@TODO: need to figure out Rule::in or in_array rule to validate category id
 			return [
 				'name' => 'required|string|max:255',
 				'category_id' => 'required|integer|min:0',
