@@ -103,8 +103,8 @@
 	.asset-delete-form {
 		margin: 0;
 
-		.delete-asset-btn {
-			@include asset-btn($delete-asset-btn);
+		.asset-delete-btn {
+			@include asset-btn($asset-delete-btn);
 			margin-left: 2rem;
 		}
 	}

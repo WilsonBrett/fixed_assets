@@ -24,7 +24,7 @@
 			<form method="post" action="/assets/{{ $vals->id }}" class="asset-delete-form">
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 				{{ method_field('DELETE') }}
-				<input type="submit" value="Delete Asset" class="delete-asset-btn">
+				<input type="submit" value="Delete Asset" class="asset-delete-btn">
 			</form>
 		</div>
 	</div>
