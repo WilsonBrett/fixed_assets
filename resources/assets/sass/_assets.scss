@@ -2,7 +2,9 @@
 	text-align: center;
 }
 
+//index route
 .index-table {
+	background-color: $table-background;
 	border-collapse: collapse;
 	margin: 0 auto;
 
@@ -10,23 +12,31 @@
 		border-bottom: 1px solid $asset-border-bottom;
 
 		th {
+			padding: 0.5rem 1rem;
 			font-family: $serif-stack;
 			font-weight: 100;
 		}
 	}
 
 	tbody {
+		tr:nth-child(odd) {
+			background-color: $table-stripe;
+		}
+
+		//text-alignment on table body td's
+		.asset-number, .asset-purchase-date, .asset-details-btn, .asset-edit-btn {
+			text-align: center;
+		}
+
+		.asset-amount {
+			text-align: right;
+		}
+
 		td {
 			line-height: 2rem;
-			padding: 0 1.5rem;
-
-			&.asset-amount {
-				text-align: right;
-			}
+			padding: 0 1rem;
 
 			&.asset-details-btn {
-				padding-right: 2rem;
-
 				a {
 					@extend %asset-btn;
 					background-color: $asset-detail-btn-back;
@@ -37,15 +47,13 @@
 				}
 			}
 
-			&.edit-asset-btn {
-				padding-left: 2rem;
-
+			&.asset-edit-btn {
 				a {
 					@extend %asset-btn;
-					background-color: $edit-asset-btn;
+					background-color: $asset-edit-btn;
 
 					&:hover {
-						background-color: lighten($edit-asset-btn, 5%);
+						background-color: lighten($asset-edit-btn, 5%);
 					}
 				}
 			}
@@ -53,7 +61,35 @@
 	}
 }
 
-//show route - view asset page
+.add-asset-btn {
+	margin: 1rem 0;
+	text-align: center;
+
+	a {
+		@extend %asset-btn;
+		background-color: $asset-add-btn;
+		color: white;
+		display: inline-block;
+		font-size: 1.25rem;
+		padding: 0.5rem 1rem;
+
+		svg {
+			color: white;
+		}
+
+		&:hover {
+			background-color: white;
+			border-color: $asset-add-btn;
+			color: $asset-add-btn;
+
+			svg {
+				color: $asset-add-btn;
+			}
+		}
+	}
+}
+
+//show route
 .asset-show {
 	.asset-wrapper {
 		.asset-details {
@@ -75,12 +111,12 @@
 		width: 50%;
 	}
 
-	.edit-asset-btn {
+	.asset-edit-btn {
 		@extend %asset-btn;
-		background-color: $edit-asset-btn;
+		background-color: $asset-edit-btn;
 
 		&:hover {
-			background-color: lighten($edit-asset-btn, 10%);
+			background-color: lighten($asset-edit-btn, 10%);
 		}
 	}
 
@@ -100,6 +136,7 @@
 	}
 }
 
+//create-route
 .asset-create {
 	.asset-wrapper {
 		.asset-details {
@@ -146,6 +183,7 @@
 	}
 }
 
+//edit-route
 .asset-edit {
 	.asset-wrapper {
 		.asset-details {

@@ -1,18 +1,24 @@
 //Colors
-$lightgrey: #ffffff;
+$blue: dodgerblue;
+$danger: red;
 $dark-grey: #464646;
 $lime-green: #64e764;
-$sherbert: #FF9D00;
-$danger: red;
+$sherbert: #ff9d00;
+$white-variant-1: ghostwhite;
+$white-variant-2: #f1f1f1;
 
 //color uses
-$site-background: $lightgrey;
+$site-background: $white-variant-1;
+$table-background: white;
+$table-stripe: $white-variant-2;
 $text-dark: $dark-grey;
-$asset-border-bottom: $text-dark;
-$asset-detail-btn-back: $lime-green;
-$edit-asset-btn: $sherbert;
+$asset-border-bottom: $dark-grey;
+$asset-add-btn: $lime-green;
+$asset-detail-btn-back: $blue;
+$asset-edit-btn: $sherbert;
 $delete-asset-btn: $danger;
 $sort-asset-btn-hover: $sherbert;
+
 //fonts
 @import url('https://fonts.googleapis.com/css?family=Adamina|Raleway');
 $base-font-size: 16px;
