@@ -17,36 +17,38 @@
 		<form method="post" action="/assets" class="asset-details">
 			<input type="hidden" name="_token" value="{{ csrf_token() }}">
 			<div class="form-group">
-				<label for="name">Name</label>
-				<input name="name" type="text" id="name" placeholder="Enter asset name" class="form-control">
+				<label for="name">Name:</label>
+				<input name="name" type="text" placeholder="Enter asset name" class="form-control">
 			</div>
 			<div class="form-group">
-				<label for="category">Category</label>
-				<select name="category_id" id="category_id" class="form-control">
+				<label for="category">Category:</label>
+				<select name="category" class="form-control">
 					@foreach($categories as $category)
 						<option value="{{ $category->id }}" data-useful-life="{{ $category->useful_life }}">{{ $category->category }}</option>
 					@endforeach
 				</select>
 			</div>
 			<div class="form-group">
-				<label for="amount">Amount</label>
-				<input name="amount" type="text" id="amount" class="form-control" placeholder="Enter Cost in USD">
+				<label for="amount">Amount:</label>
+				<input name="amount" type="text" class="form-control" placeholder="Enter Cost in USD">
 			</div>
-			<div class="form-group">
-				<label for="purchase-date">Purchase Date</label>
-				<input name="purchase_date" type="text" id="purchase-date" class="form-control hasdatepicker">
-			</div>
-			<div class="form-group">
-				<label for="service-start-date">Service Start Date</label>
-				<input name="service_start_date" type="text" id="service-start-date" class="form-control hasdatepicker">
-			</div>
-			<div class="form-group">
-				<label for="expiration-date">Expiration Date</label>
-				<input name="expiration_date" type="text" id="expiration-date" class="form-control hasdatepicker">
+			<div class="date-wrap form-group">
+				<div class="form-group">
+					<label for="purchase-date">Purchase Date:</label>
+					<input name="purchase_date" type="text" class="form-control hasdatepicker">
+				</div>
+				<div class="form-group">
+					<label for="service-start-date">Service Start Date:</label>
+					<input name="service_start_date" type="text" class="form-control hasdatepicker">
+				</div>
+				<div class="form-group">
+					<label for="expiration-date">Expiration Date:</label>
+					<input name="expiration_date" type="text" class="form-control hasdatepicker">
+				</div>
 			</div>
 			<div class="btn-wrapper form-group">
-				<input name="submit" type="submit" value="Submit" class="form-control btn">
-				<a href="/assets" class="form-control btn">Cancel</a>
+				<input name="submit" type="submit" value="Submit" class="form-control asset-submit-btn">
+				<a href="/assets" class="form-control asset-cancel-btn">Cancel</a>
 			</div>
 		</form>
 	</div>

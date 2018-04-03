@@ -3,87 +3,72 @@
 }
 
 //index route
-.index-table {
-	background-color: $table-background;
-	border-collapse: collapse;
-	margin: 0 auto;
+.asset-index {
+	.index-table {
+		background-color: $table-background;
+		border-collapse: collapse;
+		margin: 0 auto;
 
-	thead {
-		border-bottom: 1px solid $asset-border-bottom;
+		thead {
+			border-bottom: 1px solid $asset-border-bottom;
 
-		th {
+			th {
+				padding: 0.5rem 1rem;
+				font-family: $serif-stack;
+				font-weight: 100;
+			}
+		}
+
+		tbody {
+			tr:nth-child(odd) {
+				background-color: $table-stripe;
+			}
+
+			//text-alignment on table body td's
+			.asset-number, .asset-purchase-date, .asset-details-btn, .asset-edit-btn {
+				text-align: center;
+			}
+
+			.asset-amount {
+				text-align: right;
+			}
+
+			td {
+				line-height: 2rem;
+				padding: 0 1rem;
+
+				&.asset-details-btn {
+					a {
+						@include asset-btn($asset-detail-btn, 0.875rem);
+					}
+				}
+
+				&.asset-edit-btn {
+					a {
+						@include asset-btn($asset-edit-btn, 0.875rem);
+					}
+				}
+			}
+		}
+	}
+
+	.add-asset-btn {
+		margin: 1rem 0;
+		text-align: center;
+
+		a {
+			@include asset-btn($asset-add-btn, 1.25rem);
+			display: inline-block;
 			padding: 0.5rem 1rem;
-			font-family: $serif-stack;
-			font-weight: 100;
-		}
-	}
-
-	tbody {
-		tr:nth-child(odd) {
-			background-color: $table-stripe;
-		}
-
-		//text-alignment on table body td's
-		.asset-number, .asset-purchase-date, .asset-details-btn, .asset-edit-btn {
-			text-align: center;
-		}
-
-		.asset-amount {
-			text-align: right;
-		}
-
-		td {
-			line-height: 2rem;
-			padding: 0 1rem;
-
-			&.asset-details-btn {
-				a {
-					@extend %asset-btn;
-					background-color: $asset-detail-btn-back;
-
-					&:hover {
-						background-color: lighten($asset-detail-btn-back, 5%);
-					}
-				}
-			}
-
-			&.asset-edit-btn {
-				a {
-					@extend %asset-btn;
-					background-color: $asset-edit-btn;
-
-					&:hover {
-						background-color: lighten($asset-edit-btn, 5%);
-					}
-				}
-			}
-		}
-	}
-}
-
-.add-asset-btn {
-	margin: 1rem 0;
-	text-align: center;
-
-	a {
-		@extend %asset-btn;
-		background-color: $asset-add-btn;
-		color: white;
-		display: inline-block;
-		font-size: 1.25rem;
-		padding: 0.5rem 1rem;
-
-		svg {
-			color: white;
-		}
-
-		&:hover {
-			background-color: white;
-			border-color: $asset-add-btn;
-			color: $asset-add-btn;
 
 			svg {
-				color: $asset-add-btn;
+				color: white;
+			}
+
+			&:hover {
+				svg {
+					color: $asset-add-btn;
+				}
 			}
 		}
 	}
@@ -112,94 +97,42 @@
 	}
 
 	.asset-edit-btn {
-		@extend %asset-btn;
-		background-color: $asset-edit-btn;
-
-		&:hover {
-			background-color: lighten($asset-edit-btn, 10%);
-		}
+		@include asset-btn($asset-edit-btn);
 	}
 
-	#delete-asset-form {
+	.asset-delete-form {
 		margin: 0;
 
 		.delete-asset-btn {
-			@extend %asset-btn;
+			@include asset-btn($delete-asset-btn);
 			margin-left: 2rem;
-			background-color: $delete-asset-btn;
-
-			&:hover {
-				background-color: lighten($delete-asset-btn, 15%);
-				text-decoration: underline;
-			}
 		}
 	}
 }
 
-//create-route
-.asset-create {
-	.asset-wrapper {
-		.asset-details {
-			margin: 0 auto;
-			font-size: 1.5rem;
-			width: 50%;
-
-			.form-group {
-				label {
-					color: $text-dark;
-					display: block;
-				}
-			}
-
-			.form-group + .form-group {
-				margin-top: 1rem;
-			}
-
-			.form-control {
-				border: 1px solid lightsteelblue;
-				color: $text-dark;
-				display: block;
-				font-family: $sans-serif-stack;
-				font-size: 1.5rem;
-				font-weight: 100;
-				padding: 0.5rem 1rem;
-				width: 100%;
-			}
-
-			.btn-wrapper {
-				display: flex;
-				justify-content: space-around;
-
-				.btn {
-					border-radius: 5px;
-					font-size: 1rem;
-					font-weight: 100;
-					padding: 0.5rem 0;
-					text-align: center;
-					width: 25%;
-				}
-			}
-		}
-	}
-}
-
-//edit-route
+//create & edit routes
+.asset-create,
 .asset-edit {
 	.asset-wrapper {
 		.asset-details {
+			background-color: $asset-create-form;
+			border-color: $asset-create-form-border;
+			border-radius: 5px;
+			border-style: solid;
+			border-width: 1px;
 			margin: 0 auto;
-			font-size: 1.5rem;
+			padding: 1rem;
 			width: 50%;
 
-			.form-group {
-				label {
-					color: $text-dark;
-					display: block;
-				}
+			//avoid applying top margin to form groups within date wrapper
+			> .form-group {
+				margin-top: 1rem;
 			}
 
-			.form-group + .form-group {
-				margin-top: 1rem;
+			label {
+				color: $text-dark;
+				display: block;
+				font-weight: bold;
 			}
 
 			.form-control {
@@ -207,25 +140,53 @@
 				color: $text-dark;
 				display: block;
 				font-family: $sans-serif-stack;
-				font-size: 1.5rem;
 				font-weight: 100;
 				padding: 0.5rem 1rem;
 				width: 100%;
+			}
+
+			.date-wrap {
+				display: flex;
+				justify-content: space-between;
 			}
 
 			.btn-wrapper {
 				display: flex;
 				justify-content: space-around;
 
-				.btn {
-					border-radius: 5px;
-					font-size: 1rem;
+				.asset-submit-btn {
+					@include asset-btn($asset-add-btn);
 					font-weight: 100;
 					padding: 0.5rem 0;
 					text-align: center;
 					width: 25%;
 				}
+
+				.asset-cancel-btn {
+					@extend .asset-submit-btn;
+					background-color: grey;
+					border-color: grey;
+
+					&:hover {
+						color: grey;
+					}
+				}
 			}
+		}
+	}
+}
+
+.asset-edit {
+	.asset-delete-form {
+		margin: 0 auto;
+		text-align: center;
+		width: 50%;
+
+		.asset-delete-btn {
+			@include asset-btn($danger);
+			padding: 0.5rem 0;
+			margin: 1rem 0;
+			width: 25%;
 		}
 	}
 }

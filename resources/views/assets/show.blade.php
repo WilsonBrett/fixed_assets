@@ -20,8 +20,8 @@
 			@endforeach
 		</ul>
 		<div class="btn-wrapper">
-			<a href="/assets/{{ $vals->id }}/edit" class="edit-asset-btn">Edit Asset</a>
-			<form method="post" action="/assets/{{ $vals->id }}" id="delete-asset-form">
+			<a href="/assets/{{ $vals->id }}/edit" class="asset-edit-btn">Edit Asset</a>
+			<form method="post" action="/assets/{{ $vals->id }}" class="asset-delete-form">
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 				{{ method_field('DELETE') }}
 				<input type="submit" value="Delete Asset" class="delete-asset-btn">

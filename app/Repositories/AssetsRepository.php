@@ -19,7 +19,7 @@ class AssetsRepository implements AssetsInterface {
 	public function add_asset(StoreAsset $req) {
 		$asset = new Asset;
 		$asset->name = $req->name;
-		$asset->category_id = $req->category_id;
+		$asset->category_id = $req->category;
 		$asset->amount = $req->amount;
 		$asset->purchase_date = $req->purchase_date;
 		$asset->service_start_date = $req->service_start_date;

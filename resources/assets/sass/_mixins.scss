@@ -1,0 +1,13 @@
+@mixin asset-btn($bgcolor, $fontsz:1rem) {
+	background-color: $bgcolor;
+	border: 1px solid $bgcolor;
+	border-radius: 5px;
+	color: white;
+	font-size: $fontsz;
+	padding: 0.25rem;
+
+	&:hover {
+		background-color: white;
+		color: $bgcolor;
+	}
+}

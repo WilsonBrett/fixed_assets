@@ -26,7 +26,7 @@ class StoreAsset extends FormRequest
     public function rules() {
 			return [
 				'name' => 'required|string|max:255',
-				'category_id' => 'required|integer|min:0',
+				'category' => 'required|integer|min:0',
 				'amount' => 'required|numeric|min:0|max:10000000',
 				'purchase_date' => 'required|date',
 				'service_start_date' => 'required|date',

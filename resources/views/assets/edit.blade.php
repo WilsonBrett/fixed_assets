@@ -4,57 +4,59 @@
 @extends('base')
 
 @section('content')
-    @if ($errors->any())
-        <div class="alert alert-danger">
-						<ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-		<div class="asset-wrapper">
-			<form method="post" action="/assets/{{ $asset->id }}" class="asset-details">
-				<input type="hidden" name="_token" value="{{ csrf_token() }}">
-				{{ method_field('PUT') }}
+	@if ($errors->any())
+		<div class="alert alert-danger">
+			<ul>
+				@foreach ($errors->all() as $error)
+					<li>{{ $error }}</li>
+				@endforeach
+			</ul>
+		</div>
+	@endif
+	<div class="asset-wrapper">
+		<form method="post" action="/assets/{{ $asset->id }}" class="asset-details">
+			<input type="hidden" name="_token" value="{{ csrf_token() }}">
+			{{ method_field('PUT') }}
+			<div class="form-group">
+				<label for="name">Name:</label>
+				<input name="name" type="text" value="{{ $asset->name}}" class="form-control">
+			</div>
+			<div class="form-group">
+				<label for="category">Category:</label>
+				<select name="category" class="form-control">
+					@foreach($categories as $category)
+						<option value="{{ $category->id }}" data-useful-life="{{ $category->useful_life }}" {{ $asset->category == $category->category ? 'selected' : null }}>{{ $category->category }}</option>
+					@endforeach
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="amount">Amount:</label>
+				<input name="amount" type="text" value="{{ number_format($asset->amount, 2) }}" class="form-control">
+			</div>
+			<div class="date-wrap form-group">
 				<div class="form-group">
-					<label for="name">Name</label>
-					<input name="name" type="text" value="{{ $asset->name}}" class="form-control">
-				</div>
-				<div class="form-group">
-					<label for="category">Category</label>
-					<select name="category" class="form-control" class="form-control">
-						@foreach($categories as $category)
-							<option value="{{ $category->id }}" data-useful-life="{{ $category->useful_life }}" {{ $asset->category == $category->category ? 'selected' : null }}>{{ $category->category }}</option>
-						@endforeach
-					</select>
-				</div>
-				<div class="form-group">
-					<label for="amount">Amount</label>
-					<input name="amount" type="text" value="{{ number_format($asset->amount, 2) }}" class="form-control">
-				</div>
-				<div class="form-group">
-					<label for="purchase-date">Purchase Date</label>
+					<label for="purchase-date">Purchase Date:</label>
 					<input name="purchase_date" type="text" class="form-control hasdatepicker" value="{{ date_create($asset->purchase_date)->format('m/d/Y') }}">
 				</div>
 				<div class="form-group">
-					<label for="service-start-date">Service Start Date</label>
+					<label for="service-start-date">Service Start Date:</label>
 					<input name="service_start_date" type="text" class="form-control hasdatepicker" value="{{ date_create($asset->service_start_date)->format('m/d/Y') }}">
 				</div>
 				<div class="form-group">
-					<label for="expiration-date">Expiration Date</label>
+					<label for="expiration-date">Expiration Date:</label>
 					<input name="expiration_date" type="text" class="form-control hasdatepicker" value="{{ date_create($asset->expiration_date)->format('m/d/Y') }}" readonly>
 				</div>
-				<div class="btn-wrapper form-group">
-					<input name="submit" type="submit" value="Submit" class="form-control btn">
-					<a href="/assets/{{$asset->id}}" class="form-control btn">Cancel</a>
-				</div>
-			</form>
-			<form method="post" action="/assets/{{ $asset->id }}" id="deleteForm" class="form-group">
-				<input type="hidden" name="_token" value="{{ csrf_token() }}">
-				{{ method_field('DELETE') }}
-				<input type="submit" value="Delete Asset" class="form-control btn">
-			</form>
-		</div>
+			</div>
+			<div class="btn-wrapper form-group">
+				<input name="submit" type="submit" value="Submit" class="form-control asset-submit-btn">
+				<a href="/assets/{{$asset->id}}" class="form-control asset-cancel-btn">Cancel</a>
+			</div>
+		</form>
+		<form method="post" action="/assets/{{ $asset->id }}" class="form-group asset-delete-form">
+			<input type="hidden" name="_token" value="{{ csrf_token() }}">
+			{{ method_field('DELETE') }}
+			<input type="submit" value="Delete Asset" class="form-control asset-delete-btn">
+		</form>
+	</div>
 
 @stop
