@@ -133,6 +133,10 @@
 				color: $text-dark;
 				display: block;
 				font-weight: bold;
+
+				span {
+					color: $asset-required;
+				}
 			}
 
 			.form-control {
@@ -148,6 +152,10 @@
 			.date-wrap {
 				display: flex;
 				justify-content: space-between;
+
+				.form-control {
+					text-align: right;
+				}
 			}
 
 			.btn-wrapper {

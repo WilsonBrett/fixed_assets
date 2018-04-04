@@ -18,11 +18,11 @@
 			<input type="hidden" name="_token" value="{{ csrf_token() }}">
 			{{ method_field('PUT') }}
 			<div class="form-group">
-				<label for="name">Name:</label>
+				<label for="name">Name: <span>*</span></label>
 				<input name="name" type="text" value="{{ $asset->name}}" class="form-control">
 			</div>
 			<div class="form-group">
-				<label for="category">Category:</label>
+				<label for="category">Category: <span>*</span></label>
 				<select name="category" class="form-control">
 					@foreach($categories as $category)
 						<option value="{{ $category->id }}" data-useful-life="{{ $category->useful_life }}" {{ $asset->category == $category->category ? 'selected' : null }}>{{ $category->category }}</option>
@@ -30,7 +30,7 @@
 				</select>
 			</div>
 			<div class="form-group">
-				<label for="amount">Amount:</label>
+				<label for="amount">Amount: <span>*</span></label>
 				<input name="amount" type="text" value="{{ number_format($asset->amount, 2) }}" class="form-control">
 			</div>
 			<div class="date-wrap form-group">
@@ -39,12 +39,12 @@
 					<input name="purchase_date" type="text" class="form-control hasdatepicker" value="{{ date_create($asset->purchase_date)->format('m/d/Y') }}">
 				</div>
 				<div class="form-group">
-					<label for="service-start-date">Service Start Date:</label>
+					<label for="service-start-date">Service Start Date: <span>*</span></label>
 					<input name="service_start_date" type="text" class="form-control hasdatepicker" value="{{ date_create($asset->service_start_date)->format('m/d/Y') }}">
 				</div>
 				<div class="form-group">
 					<label for="expiration-date">Expiration Date:</label>
-					<input name="expiration_date" type="text" class="form-control hasdatepicker" value="{{ date_create($asset->expiration_date)->format('m/d/Y') }}" readonly>
+					<input name="expiration_date" type="text" class="form-control" value="{{ date_create($asset->expiration_date)->format('m/d/Y') }}" readonly>
 				</div>
 			</div>
 			<div class="btn-wrapper form-group">

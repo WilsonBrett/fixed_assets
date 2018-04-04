@@ -28,7 +28,7 @@ class StoreAsset extends FormRequest
 				'name' => 'required|string|max:255',
 				'category' => 'required|integer|min:0',
 				'amount' => 'required|numeric|min:0|max:10000000',
-				'purchase_date' => 'required|date',
+				'purchase_date' => 'date',
 				'service_start_date' => 'required|date',
 				'expiration_date' => 'required|date',
 			];
