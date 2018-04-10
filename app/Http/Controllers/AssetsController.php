@@ -40,7 +40,11 @@
 
 		public function update(UpdateAsset $request, $id) {
 			$this->repository->update_asset($request, $id);
-			return redirect('/assets');
+			if($_POST['_edit_origin'] == 'asset_index') {
+				return redirect('/assets');
+			} elseif($_POST['_edit_origin'] == 'asset_show') {
+				return redirect('/assets/' . $id);
+			}
 		}
 
 		public function create() {

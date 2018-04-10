@@ -17,6 +17,7 @@
 		<form method="post" action="/assets/{{ $asset->id }}" class="asset-details">
 			<input type="hidden" name="_token" value="{{ csrf_token() }}">
 			{{ method_field('PUT') }}
+			<input type="hidden" name="_edit_origin" value="{{ $origin }}">
 			<div class="form-group">
 				<label for="name">Name: <span>*</span></label>
 				<input name="name" type="text" value="{{ $asset->name}}" class="form-control">

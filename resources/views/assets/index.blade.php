@@ -49,7 +49,7 @@
 					<td class="asset-amount">{{ number_format($asset->amount, 2) }}</td>
 					<td class="asset-purchase-date">{{ date_create($asset->purchase_date)->format('M j, Y') }}</td>
 					<td class="asset-details-btn"><a href="/assets/{{ $asset->id }}">View</a></td>
-					<td class="asset-edit-btn"><a href="/assets/{{ $asset->id }}/edit">Edit</a></td>
+					<td class="asset-edit-btn"><a href="/assets/{{ $asset->id }}/edit?origin=asset_index">Edit</a></td>
 				</tr>
 			@endforeach
 		</tbody>
