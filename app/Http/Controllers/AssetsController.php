@@ -34,7 +34,8 @@
 		public function edit($id) {
 			$asset = $this->repository->get_asset_by_id($id);
 			$categories = $this->categories_repository->get_categories(); //need this for the drop down select list
-			return view('assets.edit', ['asset' => $asset, 'categories' => $categories]);
+			$origin = isset($_GET['origin']) ? $_GET['origin'] : ""; //need this for cancel button url
+			return view('assets.edit', ['asset' => $asset, 'categories' => $categories, 'origin' => $origin]);
 		}
 
 		public function update(UpdateAsset $request, $id) {

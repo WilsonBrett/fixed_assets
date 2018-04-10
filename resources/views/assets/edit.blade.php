@@ -49,7 +49,11 @@
 			</div>
 			<div class="btn-wrapper form-group">
 				<input name="submit" type="submit" value="Submit" class="form-control asset-submit-btn">
-				<a href="/assets/{{$asset->id}}" class="form-control asset-cancel-btn">Cancel</a>
+				@if($origin == 'asset_show')
+					<a href="/assets/{{$asset->id}}" class="form-control asset-cancel-btn">Cancel</a>
+				@else
+					<a href="/assets" class="form-control asset-cancel-btn">Cancel</a>
+				@endif
 			</div>
 		</form>
 		<form method="post" action="/assets/{{ $asset->id }}" class="form-group asset-delete-form">

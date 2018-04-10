@@ -24,6 +24,12 @@
 				background-color: $table-stripe;
 			}
 
+			.asset-name {
+				a:hover {
+					text-decoration: underline;
+				}
+			}
+
 			//text-alignment on table body td's
 			.asset-number, .asset-purchase-date, .asset-details-btn, .asset-edit-btn {
 				text-align: center;

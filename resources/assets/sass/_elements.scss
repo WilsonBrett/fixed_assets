@@ -4,6 +4,7 @@ html {
 
 body {
 	background-color: $site-background;
+	color: $body-color;
 	font-family: $sans-serif-stack;
 	font-weight: 100;
 	margin: 0 auto;
@@ -28,6 +29,7 @@ h1 {
 }
 
 a, a:hover, a:visited, a:active, a:link {
+	color: $black;
 	text-decoration: none;
 }
 
