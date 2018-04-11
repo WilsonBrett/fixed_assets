@@ -20,16 +20,13 @@
 		}
 
 		public function index() {
-			$sort_col = isset($_GET['sort']) ? $_GET['sort'] : 'category';
-			$order_col = isset($_GET['order']) ? $_GET['order'] : 'asc';
-			$assets = $this->repository->get_assets($sort_col, $order_col);
-			return view('assets.index', ['assets' => $assets]);
+			$data = $this->repository->get_assets();
+			return $data;
 		}
 
 		public function show($id) {
-			$vals = $this->repository->get_asset_by_id($id);
-			return $vals;
-			//return view('assets.show', ['vals' => $vals]);
+			$data = $this->repository->get_asset_by_id($id);
+			return $data;
 		}
 
 		public function edit($id) {

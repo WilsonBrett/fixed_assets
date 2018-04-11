@@ -24,16 +24,22 @@ class AssetsRepositoryJSON implements AssetsInterface {
 	}
 
 	//read
-	public function get_assets($sort, $order) {
-		$order2 = $sort == 'name' ? $order : 'asc';
+	public function get_assets() {
 		$assets = DB::table('assets')
 			->leftJoin('categories', 'assets.category_id', '=', 'categories.id')
-			->select('assets.id', 'assets.name', 'categories.category', 'assets.amount', 'assets.purchase_date')
-			->orderBy($sort, $order)
-			->orderBy('name', $order2)
-			->paginate(10);
+			->select(
+				'assets.id',
+				'assets.name',
+				'categories.category',
+				'assets.amount',
+				'assets.purchase_date',
+				'assets.service_start_date',
+				'assets.expiration_date',
+				'assets.created_at',
+				'assets.updated_at'
+			)->get();
 
-		return $assets;
+		return AssetResource::collection($assets);
 	}
 
 	public function get_asset_by_assetname($a) {
@@ -41,15 +47,23 @@ class AssetsRepositoryJSON implements AssetsInterface {
 	}
 
 	public function get_asset_by_id($id) {
-		$x = new AssetResource(Asset::find($id));
-		return $x;
-//		$asset = DB::table('assets')
-//			->leftJoin('categories', 'assets.category_id', '=', 'categories.id')
-//			->select('assets.id', 'assets.name', 'categories.category', 'categories.useful_life', 'assets.amount', 'assets.purchase_date', 'assets.service_start_date', 'assets.expiration_date')
-//			->where('assets.id', $id)
-//			->get();
-//
-//		return $asset_vals = $asset->all()[0];
+		$asset = DB::table('assets')
+			->leftJoin('categories', 'assets.category_id', '=', 'categories.id')
+			->select(
+				'assets.id',
+				'assets.name',
+				'categories.category',
+				'assets.amount',
+				'assets.purchase_date',
+				'assets.service_start_date',
+				'assets.expiration_date',
+				'assets.created_at',
+				'assets.updated_at'
+			)
+			->where('assets.id', $id)
+			->get();
+
+		return AssetResource::collection($asset);
 	}
 
 	//update
