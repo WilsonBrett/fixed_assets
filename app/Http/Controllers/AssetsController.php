@@ -28,7 +28,8 @@
 
 		public function show($id) {
 			$vals = $this->repository->get_asset_by_id($id);
-			return view('assets.show', ['vals' => $vals]);
+			return $vals;
+			//return view('assets.show', ['vals' => $vals]);
 		}
 
 		public function edit($id) {
